@@ -6,6 +6,7 @@ package daw;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -19,12 +20,8 @@ public class Main {
         String fichero = "vehiculos.csv";
              
         lineasFichero = leerDocumentoCSV.leerFichero(fichero);
-        //lineasFichero.forEach(System.out::println);   
-        
-        //String[] datosVehiculo = leerDocumentoCSV.extraerDatosVehiculoPorLinea(fichero);
-        //for (String s : datosVehiculo) {
-     //       System.out.println(s);
-       // }
+        System.out.println("******* Mostrar fichero ********");
+        lineasFichero.forEach(System.out::println);   
         
         List<Vehiculo> listaVehiculos;
         
@@ -33,5 +30,10 @@ public class Main {
         for (Vehiculo l : listaVehiculos) {
             System.out.println(l);
         }
+        
+        //Probar método Map
+        Map<Integer,Integer> lista = leerDocumentoCSV.contarPalabrasEnLinea(lineasFichero);
+        System.out.println(lista);
+        
     }
 }

@@ -52,12 +52,22 @@ public class leerDocumentoCSV {
 
     //Método para contar las palabras por linea del fichero
     public static Map<Integer, Integer> contarPalabrasEnLinea(List<String> lista) {
+        //Creo un map donde almacenaré el número de palabras
         Map<Integer, Integer> listaMap = new TreeMap();
         int posicionMap = 0;
+        int contadorPalabras=0; //Acumularé el número de palabras
         for (String linea : lista) {
-            String[] array = linea.split(",");//Separar por , y espacio
-            listaMap.put(posicionMap, array.length);//El tamaño son als palabras
+            String[] array = linea.split(",");//Separar por ,
+//            Para controlar el número de palabras entre las comas, ahora a ese array
+//            lo voy a cortar por espacios para saber el numero de palabras de ese array
+            for (String s : array) {
+                //Cortamos
+                String[] array2 = s.split("\\s+");//Uno o más espacios
+                contadorPalabras+=array2.length;//El tamaño es el número de palabras
+            }
+            listaMap.put(posicionMap, contadorPalabras);//El tamaño son als palabras
             posicionMap++;
+            contadorPalabras=0;//Lo volvemos a poner de 0 para la siguiente linea
         }
         return listaMap;
 
